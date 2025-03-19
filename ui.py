@@ -3,13 +3,11 @@ from tkinter import messagebox
 import logic
 
 def refresh_list():
-    """Обновление списка задач"""
     task_list.delete(0, tk.END)
     for task in logic.get_all_tasks():
         task_list.insert(tk.END, f"{task[0]}: {task[1]} - {task[2]}")
 
 def add_task():
-    """Добавление задачи"""
     task = task_entry.get()
     if logic.add_new_task(task):
         task_entry.delete(0, tk.END)
@@ -18,7 +16,6 @@ def add_task():
         messagebox.showerror("Ошибка", "Нельзя добавить пустую задачу!")
 
 def complete_task():
-    """Отметить задачу как выполненную"""
     try:
         task_id = int(task_list.get(tk.ACTIVE).split(":")[0])
         logic.complete_task(task_id)
@@ -27,7 +24,6 @@ def complete_task():
         messagebox.showerror("Ошибка", "Выберите задачу!")
 
 def delete_task():
-    """Удаление задачи"""
     try:
         task_id = int(task_list.get(tk.ACTIVE).split(":")[0])
         logic.remove_task(task_id)
