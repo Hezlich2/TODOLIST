@@ -1,8 +1,6 @@
 import database
-import ui  # Проверь, чтобы был правильный импорт
+import ui 
 
-# Создаём базу данных перед запуском UI
 database.connect_db()
 
-# Запускаем графический интерфейс
 ui.start_app()
